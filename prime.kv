@@ -1,0 +1,33 @@
+#:kivy 2.1.0
+#:import randint random.randint
+
+<PrimeBall>:
+    size: 100, 100
+    canvas:
+        Color:
+            rgb: (randint(100, 200) / 255., randint(160, 255) / 255., randint(200, 255) / 255.)
+        Ellipse:
+            pos: self.pos
+            size: self.size
+    Label:
+        color: [0,0,0,2]
+        pos: root.pos
+        font_size: 40
+        text: str(root.value)
+<PrimeSmash>:
+    p_ball: p_ball
+    player: player
+
+    Label:
+        color: [0,0,0,2]
+        text: "score: "+str(player.score)
+        top: root.top
+        font_size:25
+        center_x: root.center_x
+
+    Player:
+        id: player
+
+    PrimeBall:
+        id: p_ball
+        center: (randint(self.width/2,root.width-self.width/2), root.height-self.height/2)
